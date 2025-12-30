@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator | Seven Gravity Lead Generation</title>
+    <meta name="description" content="Calculate your return on investment with Seven Gravity's B2B cold email lead generation services">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.8s ease-out;
+        }
+
+        /* Custom slider styling */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .slider-cyan::-webkit-slider-thumb {
+            background: rgb(6 182 212);
+        }
+
+        .slider-cyan::-moz-range-thumb {
+            background: rgb(6 182 212);
+        }
+
+        .slider-emerald::-webkit-slider-thumb {
+            background: rgb(16 185 129);
+        }
+
+        .slider-emerald::-moz-range-thumb {
+            background: rgb(16 185 129);
+        }
+
+        /* Number input styling */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            opacity: 1;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            500: '#64748b',
+                            400: '#94a3b8',
+                            300: '#cbd5e1',
+                            200: '#e2e8f0',
+                            100: '#f1f5f9',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen">
+    
+    <div class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto">
+            
+            <!-- Header -->
+            <div class="text-center mb-12 animate-fade-in">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 mb-4">
+                    Calculate Your ROI
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                    See exactly how partnering with Seven Gravity transforms your cold email outreach into predictable, profitable growth
+                </p>
+            </div>
+
+            <!-- Main Calculator Card -->
+            <div class="bg-slate-800/50 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-700/50 p-6 sm:p-10 mb-8">
+                
+                <!-- STEP 1: Campaign Setup -->
+                <div class="mb-12">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <span class="text-white font-bold text-lg">1</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-100 mb-2">Your Campaign Setup</h2>
+                            <p class="text-slate-400 leading-relaxed">
+                                First, let's configure your cold email campaign. Choose your monthly volume and sequence strategy.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 ml-0 md:ml-14">
+                        
+                        <!-- Email Volume -->
+                        <div class="space-y-3">
+                            <label class="block text-sm font-semibold text-slate-200">
+                                Monthly Email Volume
+                            </label>
+                            <select id="emailVolume" class="w-full bg-slate-900/80 border-2 border-slate-700 rounded-xl px-4 py-3.5 text-slate-100 text-base font-semibold focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200 cursor-pointer hover:border-slate-600">
+                                <option value="25000">25,000 emails/month</option>
+                                <option value="50000">50,000 emails/month</option>
+                                <option value="75000">75,000 emails/month</option>
+                                <option value="100000">100,000 emails/month</option>
+                            </select>
+                            <p class="text-xs text-slate-400 italic">
+                                Tech Fee: <span id="techFeeDisplay">$500</span> (includes infrastructure setup)
+                            </p>
+                        </div>
+
+                        <!-- Emails Per Contact -->
+                        <div class="space-y-3">
+                            <label class="block text-sm font-semibold text-slate-200">
+                                Emails Per Contact (Sequence Length)
+                            </label>
+                            <input type="number" id="emailsPerContact" min="1" max="5" value="2" class="w-full bg-slate-900/80 border-2 border-slate-700 rounded-xl px-4 py-3.5 text-slate-100 text-base font-bold focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200">
+                            <p class="text-xs text-slate-400 italic">
+                                Number of follow-up emails in your sequence (typically 2-3)
+                            </p>
+                        </div>
+
+                        <!-- Cost Per Call -->
+                        <div class="space-y-3">
+                            <label class="block text-sm font-semibold text-slate-200">
+                                Cost Per Booked Call
+                            </label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-base">$</span>
+                                <input type="number" id="costPerCall" min="100" max="1000" step="50" value="300" class="w-full bg-slate-900/80 border-2 border-slate-700 rounded-xl pl-9 pr-4 py-3.5 text-slate-100 text-base font-bold focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200">
+                            </div>
+                            <p class="text-xs text-slate-400 italic">
+                                Your investment per qualified call ($100-$1,000)
+                            </p>
+                        </div>
+
+                        <!-- Average Sale Price -->
+                        <div class="space-y-3">
+                            <label class="block text-sm font-semibold text-slate-200">
+                                Average Sale Price
+                            </label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-base">$</span>
+                                <input type="number" id="avgSalePrice" min="1000" max="1000000" step="1000" value="10000" class="w-full bg-slate-900/80 border-2 border-slate-700 rounded-xl pl-9 pr-4 py-3.5 text-slate-100 text-base font-bold focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-200">
+                            </div>
+                            <p class="text-xs text-slate-400 italic">
+                                Typical contract value when a prospect becomes a client
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Response & Conversion Rates -->
+                <div class="mb-12 pt-8 border-t border-slate-700">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <span class="text-white font-bold text-lg">2</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-100 mb-2">Expected Conversion Rates</h2>
+                            <p class="text-slate-400 leading-relaxed">
+                                Adjust these rates based on your industry and target audience. We've pre-filled conservative industry averages.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 ml-0 md:ml-14">
+                        
+                        <!-- Reply Rate Slider -->
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <label class="text-sm font-semibold text-slate-200">Reply Rate</label>
+                                <span class="text-xl font-bold text-cyan-400" id="replyRateValue">2.0%</span>
+                            </div>
+                            <input type="range" id="replyRate" min="0.5" max="5" step="0.1" value="2" class="w-full h-3 bg-slate-700 rounded-lg slider-cyan">
+                            <div class="flex justify-between text-xs text-slate-500">
+                                <span>0.5%</span>
+                                <span>2.75%</span>
+                                <span>5%</span>
+                            </div>
+                            <p class="text-xs text-slate-400 italic">
+                                Percentage of contacts who reply to your emails (industry range: 0.5-5%)
+                            </p>
+                        </div>
+
+                        <!-- Positive Reply Rate Slider -->
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <label class="text-sm font-semibold text-slate-200">Positive Reply Rate</label>
+                                <span class="text-xl font-bold text-emerald-400" id="positiveReplyRateValue">12.5%</span>
+                            </div>
+                            <input type="range" id="positiveReplyRate" min="5" max="25" step="0.5" value="12.5" class="w-full h-3 bg-slate-700 rounded-lg slider-emerald">
+                            <div class="flex justify-between text-xs text-slate-500">
+                                <span>5%</span>
+                                <span>15%</span>
+                                <span>25%</span>
+                            </div>
+                            <p class="text-xs text-slate-400 italic">
+                                Of all replies, percentage showing genuine interest
+                            </p>
+                        </div>
+
+                        <!-- Call Booking Rate Slider -->
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <label class="text-sm font-semibold text-slate-200">Call Booking Rate</label>
+                                <span class="text-xl font-bold text-cyan-400" id="callBookingRateValue">25%</span>
+                            </div>
+                            <input type="range" id="callBookingRate" min="10" max="50" step="1" value="25" class="w-full h-3 bg-slate-700 rounded-lg slider-cyan">
+                            <div class="flex justify-between text-xs text-slate-500">
+                                <span>10%</span>
+                                <span>30%</span>
+                                <span>50%</span>
+                            </div>
+                            <p class="text-xs text-slate-400 italic">
+                                Positive replies that convert to scheduled sales calls
+                            </p>
+                        </div>
+
+                        <!-- Close Rate Slider -->
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <label class="text-sm font-semibold text-slate-200">Close Rate</label>
+                                <span class="text-xl font-bold text-emerald-400" id="closeRateValue">25%</span>
+                            </div>
+                            <input type="range" id="closeRate" min="10" max="50" step="1" value="25" class="w-full h-3 bg-slate-700 rounded-lg slider-emerald">
+                            <div class="flex justify-between text-xs text-slate-500">
+                                <span>10%</span>
+                                <span>30%</span>
+                                <span>50%</span>
+                            </div>
+                            <p class="text-xs text-slate-400 italic">
+                                Booked calls that convert to closed clients
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3: The Funnel Journey -->
+                <div class="mb-12 pt-8 border-t border-slate-700">
+                    <div class="flex items-start gap-4 mb-8">
+                        <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <span class="text-white font-bold text-lg">3</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-100 mb-2">Your Lead Generation Funnel</h2>
+                            <p class="text-slate-400 leading-relaxed">
+                                Watch how your campaign flows from initial outreach to closed clients. Every number updates in real-time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Funnel Steps -->
+                    <div class="space-y-4 ml-0 md:ml-14" id="funnelSteps">
+                        <!-- Dynamically populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- STEP 4: Financial Results -->
+                <div class="pt-8 border-t border-slate-700">
+                    <div class="flex items-start gap-4 mb-8">
+                        <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <span class="text-white font-bold text-lg">4</span>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-100 mb-2">Your Investment & Returns</h2>
+                            <p class="text-slate-400 leading-relaxed">
+                                Here's the bottom line: what you invest versus what you earn. This is where ROI becomes crystal clear.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 ml-0 md:ml-14" id="financialMetrics">
+                        <!-- Dynamically populated by JavaScript -->
+                    </div>
+
+                    <!-- ROI Highlight -->
+                    <div id="roiHighlight" class="ml-0 md:ml-14">
+                        <!-- Dynamically populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Disclaimer -->
+            <div class="bg-slate-800/30 border border-slate-700/50 rounded-2xl p-6 backdrop-blur-sm">
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    <span class="font-bold text-slate-200">Important:</span> These projections are based on industry averages and your inputs. 
+                    Actual results depend on factors like target audience quality, message effectiveness, offer strength, and market conditions. 
+                    Use this calculator as a planning tool to understand potential outcomes when partnering with Seven Gravity for B2B lead generation.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tech fee mapping
+        const techFees = {
+            25000: 500,
+            50000: 500,
+            75000: 750,
+            100000: 1000
+        };
+
+        // Get all inputs
+        const emailVolumeInput = document.getElementById('emailVolume');
+        const emailsPerContactInput = document.getElementById('emailsPerContact');
+        const costPerCallInput = document.getElementById('costPerCall');
+        const avgSalePriceInput = document.getElementById('avgSalePrice');
+        const replyRateInput = document.getElementById('replyRate');
+        const positiveReplyRateInput = document.getElementById('positiveReplyRate');
+        const callBookingRateInput = document.getElementById('callBookingRate');
+        const closeRateInput = document.getElementById('closeRate');
+
+        // Format currency
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        // Format number
+        function formatNumber(value) {
+            return new Intl.NumberFormat('en-US').format(Math.round(value));
+        }
+
+        // Update slider background
+        function updateSliderBackground(slider, value, min, max) {
+            const percentage = ((value - min) / (max - min)) * 100;
+            const color = slider.classList.contains('slider-cyan') ? 'rgb(6 182 212)' : 'rgb(16 185 129)';
+            slider.style.background = `linear-gradient(to right, ${color} 0%, ${color} ${percentage}%, rgb(51 65 85) ${percentage}%, rgb(51 65 85) 100%)`;
+        }
+
+        // Get ROI status
+        function getROIStatus(roi) {
+            if (roi >= 300) {
+                return {
+                    label: 'Excellent ROI',
+                    color: 'text-emerald-500',
+                    bgColor: 'bg-emerald-500/10',
+                    borderColor: 'border-emerald-500',
+                    description: 'Outstanding return - highly profitable partnership!'
+                };
+            }
+            if (roi >= 150) {
+                return {
+                    label: 'Good ROI',
+                    color: 'text-cyan-500',
+                    bgColor: 'bg-cyan-500/10',
+                    borderColor: 'border-cyan-500',
+                    description: 'Solid return - strong growth investment.'
+                };
+            }
+            return {
+                label: 'Needs Optimization',
+                color: 'text-orange-500',
+                bgColor: 'bg-orange-500/10',
+                borderColor: 'border-orange-500',
+                description: 'Consider adjusting your sales process or targeting.'
+            };
+        }
+
+        // Calculate and update results
+        function calculate() {
+            // Get values
+            const emailVolume = parseInt(emailVolumeInput.value);
+            const emailsPerContact = parseInt(emailsPerContactInput.value);
+            const costPerCall = parseInt(costPerCallInput.value);
+            const avgSalePrice = parseInt(avgSalePriceInput.value);
+            const replyRate = parseFloat(replyRateInput.value) / 100;
+            const positiveReplyRate = parseFloat(positiveReplyRateInput.value) / 100;
+            const callBookingRate = parseInt(callBookingRateInput.value) / 100;
+            const closeRate = parseInt(closeRateInput.value) / 100;
+
+            // Calculate funnel
+            const totalContacts = Math.floor(emailVolume / emailsPerContact);
+            const totalReplies = Math.floor(totalContacts * replyRate);
+            const positiveReplies = Math.floor(totalReplies * positiveReplyRate);
+            const callsBooked = Math.floor(positiveReplies * callBookingRate);
+            const clientsClosed = Math.floor(callsBooked * closeRate);
+            const monthlyRevenue = clientsClosed * avgSalePrice;
+
+            // Calculate financials
+            const techFee = techFees[emailVolume];
+            const totalCost = techFee + (callsBooked * costPerCall);
+            const cac = clientsClosed > 0 ? totalCost / clientsClosed : 0;
+            const roi = totalCost > 0 ? ((monthlyRevenue - totalCost) / totalCost) * 100 : 0;
+            const netProfit = monthlyRevenue - totalCost;
+
+            // Update tech fee display
+            document.getElementById('techFeeDisplay').textContent = formatCurrency(techFee);
+
+            // Update slider values
+            document.getElementById('replyRateValue').textContent = (replyRate * 100).toFixed(1) + '%';
+            document.getElementById('positiveReplyRateValue').textContent = (positiveReplyRate * 100).toFixed(1) + '%';
+            document.getElementById('callBookingRateValue').textContent = Math.round(callBookingRate * 100) + '%';
+            document.getElementById('closeRateValue').textContent = Math.round(closeRate * 100) + '%';
+
+            // Update funnel steps
+            document.getElementById('funnelSteps').innerHTML = `
+                <!-- Total Contacts -->
+                <div class="bg-slate-900/50 border-2 border-slate-700 rounded-xl p-5 hover:border-cyan-500/50 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Total Contacts Reached</h3>
+                        <div class="text-3xl font-black text-slate-100">${formatNumber(totalContacts)}</div>
+                    </div>
+                    <p class="text-xs text-slate-500 italic">
+                        = ${formatNumber(emailVolume)} emails ÷ ${emailsPerContact} emails per contact
+                    </p>
+                </div>
+
+                <div class="flex justify-center">
+                    <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+
+                <!-- Total Replies -->
+                <div class="bg-slate-900/50 border-2 border-slate-700 rounded-xl p-5 hover:border-cyan-500/50 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Total Replies</h3>
+                        <div class="text-3xl font-black text-cyan-400">${formatNumber(totalReplies)}</div>
+                    </div>
+                    <p class="text-xs text-slate-500 italic">
+                        = ${formatNumber(totalContacts)} contacts × ${(replyRate * 100).toFixed(1)}% reply rate
+                    </p>
+                </div>
+
+                <div class="flex justify-center">
+                    <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+
+                <!-- Positive Replies -->
+                <div class="bg-slate-900/50 border-2 border-slate-700 rounded-xl p-5 hover:border-emerald-500/50 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Positive Replies (Interested)</h3>
+                        <div class="text-3xl font-black text-emerald-400">${formatNumber(positiveReplies)}</div>
+                    </div>
+                    <p class="text-xs text-slate-500 italic">
+                        = ${formatNumber(totalReplies)} replies × ${(positiveReplyRate * 100).toFixed(1)}% positive rate
+                    </p>
+                </div>
+
+                <div class="flex justify-center">
+                    <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+
+                <!-- Calls Booked -->
+                <div class="bg-slate-900/50 border-2 border-slate-700 rounded-xl p-5 hover:border-cyan-500/50 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Calls Booked</h3>
+                        <div class="text-3xl font-black text-cyan-400">${formatNumber(callsBooked)}</div>
+                    </div>
+                    <p class="text-xs text-slate-500 italic">
+                        = ${formatNumber(positiveReplies)} positive replies × ${Math.round(callBookingRate * 100)}% booking rate
+                    </p>
+                </div>
+
+                <div class="flex justify-center">
+                    <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+
+                <!-- Clients Closed -->
+                <div class="bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 border-2 border-emerald-500 rounded-xl p-6 shadow-lg shadow-emerald-500/10">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-sm font-semibold text-emerald-300 uppercase tracking-wide">New Clients Closed</h3>
+                        <div class="text-4xl font-black text-emerald-400">${formatNumber(clientsClosed)}</div>
+                    </div>
+                    <p class="text-xs text-slate-400 italic">
+                        = ${formatNumber(callsBooked)} calls × ${Math.round(closeRate * 100)}% close rate
+                    </p>
+                </div>
+            `;
+
+            // Update financial metrics
+            document.getElementById('financialMetrics').innerHTML = `
+                <!-- Monthly Investment -->
+                <div class="bg-orange-500/5 border-2 border-orange-500/30 rounded-xl p-6">
+                    <h3 class="text-sm font-semibold text-orange-300 uppercase tracking-wide mb-3">Monthly Investment</h3>
+                    <div class="text-4xl font-black text-orange-400 mb-3">${formatCurrency(totalCost)}</div>
+                    <p class="text-xs text-slate-400 italic leading-relaxed">
+                        = ${formatCurrency(techFee)} tech fee + (${formatNumber(callsBooked)} calls × ${formatCurrency(costPerCall)})
+                    </p>
+                </div>
+
+                <!-- CAC -->
+                <div class="bg-orange-500/5 border-2 border-orange-500/30 rounded-xl p-6">
+                    <h3 class="text-sm font-semibold text-orange-300 uppercase tracking-wide mb-3">Cost Per Client (CAC)</h3>
+                    <div class="text-4xl font-black text-orange-400 mb-3">${formatCurrency(cac)}</div>
+                    <p class="text-xs text-slate-400 italic leading-relaxed">
+                        = ${formatCurrency(totalCost)} investment ÷ ${formatNumber(clientsClosed)} clients
+                    </p>
+                </div>
+
+                <!-- Monthly Revenue -->
+                <div class="bg-emerald-500/5 border-2 border-emerald-500/30 rounded-xl p-6">
+                    <h3 class="text-sm font-semibold text-emerald-300 uppercase tracking-wide mb-3">Monthly Revenue</h3>
+                    <div class="text-4xl font-black text-emerald-400 mb-3">${formatCurrency(monthlyRevenue)}</div>
+                    <p class="text-xs text-slate-400 italic leading-relaxed">
+                        = ${formatNumber(clientsClosed)} clients × ${formatCurrency(avgSalePrice)} average sale
+                    </p>
+                </div>
+
+                <!-- Net Profit -->
+                <div class="bg-emerald-500/5 border-2 border-emerald-500/30 rounded-xl p-6">
+                    <h3 class="text-sm font-semibold text-emerald-300 uppercase tracking-wide mb-3">Net Monthly Profit</h3>
+                    <div class="text-4xl font-black text-emerald-400 mb-3">${formatCurrency(netProfit)}</div>
+                    <p class="text-xs text-slate-400 italic leading-relaxed">
+                        = ${formatCurrency(monthlyRevenue)} revenue - ${formatCurrency(totalCost)} investment
+                    </p>
+                </div>
+            `;
+
+            // Update ROI highlight
+            const roiStatus = getROIStatus(roi);
+            document.getElementById('roiHighlight').innerHTML = `
+                <div class="${roiStatus.bgColor} border-3 ${roiStatus.borderColor} rounded-2xl p-10 text-center shadow-2xl">
+                    <div class="mb-6">
+                        <svg class="w-16 h-16 ${roiStatus.color} mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                        </svg>
+                        <p class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Return on Investment</p>
+                    </div>
+                    
+                    <div class="text-7xl sm:text-8xl font-black ${roiStatus.color} mb-6 leading-none">
+                        ${roi.toFixed(0)}%
+                    </div>
+                    
+                    <div class="inline-block px-8 py-3 ${roiStatus.bgColor} border-2 ${roiStatus.borderColor} rounded-full mb-4">
+                        <p class="text-base font-bold ${roiStatus.color}">${roiStatus.label}</p>
+                    </div>
+                    
+                    <p class="text-slate-400 text-sm max-w-md mx-auto leading-relaxed mb-6">
+                        ${roiStatus.description}
+                    </p>
+                    
+                    <p class="text-xs text-slate-500 italic">
+                        = (${formatCurrency(monthlyRevenue)} - ${formatCurrency(totalCost)}) ÷ ${formatCurrency(totalCost)} × 100
+                    </p>
+                </div>
+            `;
+        }
+
+        // Event listeners
+        emailVolumeInput.addEventListener('change', calculate);
+        emailsPerContactInput.addEventListener('input', calculate);
+        costPerCallInput.addEventListener('input', calculate);
+        avgSalePriceInput.addEventListener('input', calculate);
+        
+        replyRateInput.addEventListener('input', function() {
+            updateSliderBackground(this, this.value, 0.5, 5);
+            calculate();
+        });
+        
+        positiveReplyRateInput.addEventListener('input', function() {
+            updateSliderBackground(this, this.value, 5, 25);
+            calculate();
+        });
+        
+        callBookingRateInput.addEventListener('input', function() {
+            updateSliderBackground(this, this.value, 10, 50);
+            calculate();
+        });
+        
+        closeRateInput.addEventListener('input', function() {
+            updateSliderBackground(this, this.value, 10, 50);
+            calculate();
+        });
+
+        // Initialize
+        updateSliderBackground(replyRateInput, 2, 0.5, 5);
+        updateSliderBackground(positiveReplyRateInput, 12.5, 5, 25);
+        updateSliderBackground(callBookingRateInput, 25, 10, 50);
+        updateSliderBackground(closeRateInput, 25, 10, 50);
+        calculate();
+    </script>
+</body>
+</html>
