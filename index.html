@@ -182,11 +182,6 @@
                 <p class="text-lg sm:text-xl text-slate-100 max-w-3xl mx-auto leading-relaxed">
                     See exactly how partnering with Seven Gravity transforms your cold email outreach into predictable, profitable growth
                 </p>
-                
-                <!-- DEBUG TEST BUTTON -->
-                <button onclick="alert('Button click works!'); showInfoBox('techFeeInfo');" style="background: red; color: white; padding: 10px; margin-top: 20px; border-radius: 5px;">
-                    TEST: Click to toggle first info box
-                </button>
             </div>
 
             <!-- Main Calculator Card -->
@@ -495,7 +490,6 @@
 
         // Calculate and update results
         function calculate() {
-            console.log('Calculate function called');
             // Get values
             const emailVolume = parseInt(emailVolumeInput.value);
             const emailsPerContact = parseInt(emailsPerContactInput.value);
@@ -505,8 +499,6 @@
             const positiveReplyRate = parseFloat(positiveReplyRateInput.value) / 100;
             const callBookingRate = parseInt(callBookingRateInput.value) / 100;
             const closeRate = parseInt(closeRateInput.value) / 100;
-
-            console.log('Values:', {emailVolume, emailsPerContact, costPerCall, avgSalePrice, replyRate, positiveReplyRate, callBookingRate, closeRate});
 
             // Calculate funnel
             const totalContacts = Math.floor(emailVolume / emailsPerContact);
@@ -523,9 +515,6 @@
             const roi = totalCost > 0 ? ((monthlyRevenue - totalCost) / totalCost) * 100 : 0;
             const netProfit = monthlyRevenue - totalCost;
 
-            // Update tech fee display
-            document.getElementById('techFeeDisplay').textContent = formatCurrency(techFee);
-
             // Update slider values
             document.getElementById('replyRateValue').textContent = (replyRate * 100).toFixed(1) + '%';
             document.getElementById('positiveReplyRateValue').textContent = (positiveReplyRate * 100).toFixed(1) + '%';
@@ -533,9 +522,7 @@
             document.getElementById('closeRateValue').textContent = Math.round(closeRate * 100) + '%';
 
             // Update funnel steps
-            try {
-                console.log('Updating funnel steps...');
-                const funnelHTML = `
+            const funnelHTML = `
                 <!-- Total Contacts -->
                 <div class="bg-slate-800/70 border-2 border-slate-600 rounded-xl p-5 hover:border-turquoise-500/50 transition-all duration-300">
                     <div class="flex items-center justify-between mb-3">
@@ -617,10 +604,6 @@
             `;
             
             document.getElementById('funnelSteps').innerHTML = funnelHTML;
-            console.log('Funnel steps updated successfully');
-            } catch(e) {
-                console.error('Error updating funnel:', e);
-            }
 
             // Update financial metrics
             document.getElementById('financialMetrics').innerHTML = `
