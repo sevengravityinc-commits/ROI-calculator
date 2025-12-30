@@ -127,13 +127,13 @@
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-turquoise-400 to-turquoise-500 mb-4">
                     Calculate Your ROI
                 </h1>
-                <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                <p class="text-lg sm:text-xl text-slate-100 max-w-3xl mx-auto leading-relaxed">
                     See exactly how partnering with Seven Gravity transforms your cold email outreach into predictable, profitable growth
                 </p>
             </div>
 
             <!-- Main Calculator Card -->
-            <div class="bg-slate-800/50 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-700/50 p-6 sm:p-10 mb-8">
+            <div class="bg-slate-800/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-600/50 p-6 sm:p-10 mb-8">
                 
                 <!-- STEP 1: Campaign Setup -->
                 <div class="mb-12">
@@ -143,7 +143,7 @@
                         </div>
                         <div>
                             <h2 class="text-2xl font-bold text-slate-100 mb-2">Your Campaign Setup</h2>
-                            <p class="text-slate-400 leading-relaxed">
+                            <p class="text-slate-200 leading-relaxed">
                                 First, let's configure your cold email campaign. Choose your monthly volume and sequence strategy.
                             </p>
                         </div>
@@ -156,13 +156,13 @@
                             <label class="block text-sm font-semibold text-slate-200">
                                 Monthly Email Volume
                             </label>
-                            <select id="emailVolume" class="w-full bg-slate-900/80 border-2 border-slate-700 rounded-xl px-4 py-3.5 text-slate-100 text-base font-semibold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200 cursor-pointer hover:border-slate-600">
+                            <select id="emailVolume" class="w-full bg-slate-900/95 border-2 border-slate-600 rounded-xl px-4 py-3.5 text-slate-100 text-base font-semibold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200 cursor-pointer hover:border-slate-600">
                                 <option value="25000">25,000 emails/month (Tech Fee: $500)</option>
                                 <option value="50000">50,000 emails/month (Tech Fee: $1,000)</option>
                                 <option value="75000">75,000 emails/month (Tech Fee: $1,500)</option>
                                 <option value="100000">100,000 emails/month (Tech Fee: $2,000)</option>
                             </select>
-                            <p class="text-xs text-slate-400 italic">
+                            <p class="text-xs text-slate-300 italic">
                                 Tech Fee: <span id="techFeeDisplay">$500</span> (includes infrastructure setup)
                             </p>
                         </div>
@@ -172,8 +172,8 @@
                             <label class="block text-sm font-semibold text-slate-200">
                                 Emails Per Contact (Sequence Length)
                             </label>
-                            <input type="number" id="emailsPerContact" min="1" max="5" value="2" class="w-full bg-slate-900/80 border-2 border-slate-700 rounded-xl px-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
-                            <p class="text-xs text-slate-400 italic">
+                            <input type="number" id="emailsPerContact" min="1" max="5" value="2" class="w-full bg-slate-900/95 border-2 border-slate-600 rounded-xl px-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
+                            <p class="text-xs text-slate-100 italic">
                                 Number of follow-up emails in your sequence (typically 2-3)
                             </p>
                         </div>
@@ -184,10 +184,10 @@
                                 Cost Per Booked Call
                             </label>
                             <div class="relative">
-                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-base">$</span>
-                                <input type="number" id="costPerCall" min="100" max="1000" step="50" value="300" class="w-full bg-slate-900/80 border-2 border-slate-700 rounded-xl pl-9 pr-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-200 font-bold text-base">$</span>
+                                <input type="number" id="costPerCall" min="100" max="1000" step="50" value="300" class="w-full bg-slate-900/95 border-2 border-slate-600 rounded-xl pl-9 pr-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
                             </div>
-                            <p class="text-xs text-slate-400 italic">
+                            <p class="text-xs text-slate-100 italic">
                                 Your investment per qualified call ($100-$1,000)
                             </p>
                         </div>
@@ -198,10 +198,10 @@
                                 Average Sale Price
                             </label>
                             <div class="relative">
-                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-base">$</span>
-                                <input type="number" id="avgSalePrice" min="1000" max="1000000" step="1000" value="10000" class="w-full bg-slate-900/80 border-2 border-slate-700 rounded-xl pl-9 pr-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-200 font-bold text-base">$</span>
+                                <input type="number" id="avgSalePrice" min="1000" max="1000000" step="1000" value="10000" class="w-full bg-slate-900/95 border-2 border-slate-600 rounded-xl pl-9 pr-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
                             </div>
-                            <p class="text-xs text-slate-400 italic">
+                            <p class="text-xs text-slate-100 italic">
                                 Typical contract value when a prospect becomes a client
                             </p>
                         </div>
@@ -209,14 +209,14 @@
                 </div>
 
                 <!-- STEP 2: Response & Conversion Rates -->
-                <div class="mb-12 pt-8 border-t border-slate-700">
+                <div class="mb-12 pt-8 border-t border-slate-600">
                     <div class="flex items-start gap-4 mb-6">
                         <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
                             <span class="text-white font-bold text-lg">2</span>
                         </div>
                         <div>
                             <h2 class="text-2xl font-bold text-slate-100 mb-2">Expected Conversion Rates</h2>
-                            <p class="text-slate-400 leading-relaxed">
+                            <p class="text-slate-200 leading-relaxed">
                                 Adjust these rates based on your industry and target audience. We've pre-filled conservative industry averages.
                             </p>
                         </div>
@@ -231,12 +231,12 @@
                                 <span class="text-xl font-bold text-turquoise-400" id="replyRateValue">2.0%</span>
                             </div>
                             <input type="range" id="replyRate" min="0.5" max="5" step="0.1" value="2" class="w-full h-3 bg-slate-700 rounded-lg slider-turquoise">
-                            <div class="flex justify-between text-xs text-slate-500">
+                            <div class="flex justify-between text-xs text-slate-300">
                                 <span>0.5%</span>
                                 <span>2.75%</span>
                                 <span>5%</span>
                             </div>
-                            <p class="text-xs text-slate-400 italic">
+                            <p class="text-xs text-slate-100 italic">
                                 Percentage of contacts who reply to your emails (industry range: 0.5-5%)
                             </p>
                         </div>
@@ -248,12 +248,12 @@
                                 <span class="text-xl font-bold text-emerald-400" id="positiveReplyRateValue">12.5%</span>
                             </div>
                             <input type="range" id="positiveReplyRate" min="5" max="25" step="0.5" value="12.5" class="w-full h-3 bg-slate-700 rounded-lg slider-emerald">
-                            <div class="flex justify-between text-xs text-slate-500">
+                            <div class="flex justify-between text-xs text-slate-300">
                                 <span>5%</span>
                                 <span>15%</span>
                                 <span>25%</span>
                             </div>
-                            <p class="text-xs text-slate-400 italic">
+                            <p class="text-xs text-slate-100 italic">
                                 Of all replies, percentage showing genuine interest
                             </p>
                         </div>
@@ -265,12 +265,12 @@
                                 <span class="text-xl font-bold text-turquoise-400" id="callBookingRateValue">25%</span>
                             </div>
                             <input type="range" id="callBookingRate" min="10" max="50" step="1" value="25" class="w-full h-3 bg-slate-700 rounded-lg slider-turquoise">
-                            <div class="flex justify-between text-xs text-slate-500">
+                            <div class="flex justify-between text-xs text-slate-300">
                                 <span>10%</span>
                                 <span>30%</span>
                                 <span>50%</span>
                             </div>
-                            <p class="text-xs text-slate-400 italic">
+                            <p class="text-xs text-slate-100 italic">
                                 Positive replies that convert to scheduled sales calls
                             </p>
                         </div>
@@ -282,12 +282,12 @@
                                 <span class="text-xl font-bold text-emerald-400" id="closeRateValue">25%</span>
                             </div>
                             <input type="range" id="closeRate" min="10" max="50" step="1" value="25" class="w-full h-3 bg-slate-700 rounded-lg slider-emerald">
-                            <div class="flex justify-between text-xs text-slate-500">
+                            <div class="flex justify-between text-xs text-slate-300">
                                 <span>10%</span>
                                 <span>30%</span>
                                 <span>50%</span>
                             </div>
-                            <p class="text-xs text-slate-400 italic">
+                            <p class="text-xs text-slate-100 italic">
                                 Booked calls that convert to closed clients
                             </p>
                         </div>
@@ -295,14 +295,14 @@
                 </div>
 
                 <!-- STEP 3: The Funnel Journey -->
-                <div class="mb-12 pt-8 border-t border-slate-700">
+                <div class="mb-12 pt-8 border-t border-slate-600">
                     <div class="flex items-start gap-4 mb-8">
                         <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
                             <span class="text-white font-bold text-lg">3</span>
                         </div>
                         <div>
                             <h2 class="text-2xl font-bold text-slate-100 mb-2">Your Lead Generation Funnel</h2>
-                            <p class="text-slate-400 leading-relaxed">
+                            <p class="text-slate-200 leading-relaxed">
                                 Watch how your campaign flows from initial outreach to closed clients. Every number updates in real-time.
                             </p>
                         </div>
@@ -315,14 +315,14 @@
                 </div>
 
                 <!-- STEP 4: Financial Results -->
-                <div class="pt-8 border-t border-slate-700">
+                <div class="pt-8 border-t border-slate-600">
                     <div class="flex items-start gap-4 mb-8">
                         <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
                             <span class="text-white font-bold text-lg">4</span>
                         </div>
                         <div>
                             <h2 class="text-2xl font-bold text-slate-100 mb-2">Your Investment & Returns</h2>
-                            <p class="text-slate-400 leading-relaxed">
+                            <p class="text-slate-200 leading-relaxed">
                                 Here's the bottom line: what you invest versus what you earn. This is where ROI becomes crystal clear.
                             </p>
                         </div>
@@ -340,7 +340,7 @@
             </div>
 
             <!-- Bottom Disclaimer -->
-            <div class="bg-slate-800/30 border border-slate-700/50 rounded-2xl p-6 backdrop-blur-sm">
+            <div class="bg-slate-800/30 border border-slate-600/50 rounded-2xl p-6 backdrop-blur-sm">
                 <p class="text-sm text-slate-300 leading-relaxed">
                     <span class="font-bold text-slate-200">Important:</span> These projections are based on industry averages and your inputs. 
                     Actual results depend on factors like target audience quality, message effectiveness, offer strength, and market conditions. 
@@ -459,12 +459,12 @@
             // Update funnel steps
             document.getElementById('funnelSteps').innerHTML = `
                 <!-- Total Contacts -->
-                <div class="bg-slate-900/50 border-2 border-slate-700 rounded-xl p-5 hover:border-turquoise-500/50 transition-all duration-300">
+                <div class="bg-slate-800/70 border-2 border-slate-600 rounded-xl p-5 hover:border-turquoise-500/50 transition-all duration-300">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Total Contacts Reached</h3>
-                        <div class="text-3xl font-black text-slate-100">${formatNumber(totalContacts)}</div>
+                        <h3 class="text-sm font-semibold text-white uppercase tracking-wide">Total Contacts Reached</h3>
+                        <div class="text-3xl font-black text-white font-extrabold">${formatNumber(totalContacts)}</div>
                     </div>
-                    <p class="text-xs text-slate-500 italic">
+                    <p class="text-xs text-slate-300 italic">
                         = ${formatNumber(emailVolume)} emails ÷ ${emailsPerContact} emails per contact
                     </p>
                 </div>
@@ -476,12 +476,12 @@
                 </div>
 
                 <!-- Total Replies -->
-                <div class="bg-slate-900/50 border-2 border-slate-700 rounded-xl p-5 hover:border-turquoise-500/50 transition-all duration-300">
+                <div class="bg-slate-800/70 border-2 border-slate-600 rounded-xl p-5 hover:border-turquoise-500/50 transition-all duration-300">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Total Replies</h3>
+                        <h3 class="text-sm font-semibold text-white uppercase tracking-wide">Total Replies</h3>
                         <div class="text-3xl font-black text-turquoise-400">${formatNumber(totalReplies)}</div>
                     </div>
-                    <p class="text-xs text-slate-500 italic">
+                    <p class="text-xs text-slate-300 italic">
                         = ${formatNumber(totalContacts)} contacts × ${(replyRate * 100).toFixed(1)}% reply rate
                     </p>
                 </div>
@@ -493,12 +493,12 @@
                 </div>
 
                 <!-- Positive Replies -->
-                <div class="bg-slate-900/50 border-2 border-slate-700 rounded-xl p-5 hover:border-emerald-500/50 transition-all duration-300">
+                <div class="bg-slate-800/70 border-2 border-slate-600 rounded-xl p-5 hover:border-emerald-500/50 transition-all duration-300">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Positive Replies (Interested)</h3>
+                        <h3 class="text-sm font-semibold text-white uppercase tracking-wide">Positive Replies (Interested)</h3>
                         <div class="text-3xl font-black text-emerald-400">${formatNumber(positiveReplies)}</div>
                     </div>
-                    <p class="text-xs text-slate-500 italic">
+                    <p class="text-xs text-slate-300 italic">
                         = ${formatNumber(totalReplies)} replies × ${(positiveReplyRate * 100).toFixed(1)}% positive rate
                     </p>
                 </div>
@@ -510,12 +510,12 @@
                 </div>
 
                 <!-- Calls Booked -->
-                <div class="bg-slate-900/50 border-2 border-slate-700 rounded-xl p-5 hover:border-turquoise-500/50 transition-all duration-300">
+                <div class="bg-slate-800/70 border-2 border-slate-600 rounded-xl p-5 hover:border-turquoise-500/50 transition-all duration-300">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Calls Booked</h3>
+                        <h3 class="text-sm font-semibold text-white uppercase tracking-wide">Calls Booked</h3>
                         <div class="text-3xl font-black text-turquoise-400">${formatNumber(callsBooked)}</div>
                     </div>
-                    <p class="text-xs text-slate-500 italic">
+                    <p class="text-xs text-slate-300 italic">
                         = ${formatNumber(positiveReplies)} positive replies × ${Math.round(callBookingRate * 100)}% booking rate
                     </p>
                 </div>
@@ -529,10 +529,10 @@
                 <!-- Clients Closed -->
                 <div class="bg-gradient-to-br from-emerald-500/10 to-emerald-600/5 border-2 border-emerald-500 rounded-xl p-6 shadow-lg shadow-emerald-500/10">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-sm font-semibold text-emerald-300 uppercase tracking-wide">New Clients Closed</h3>
+                        <h3 class="text-sm font-semibold text-emerald-400 uppercase tracking-wide">New Clients Closed</h3>
                         <div class="text-4xl font-black text-emerald-400">${formatNumber(clientsClosed)}</div>
                     </div>
-                    <p class="text-xs text-slate-400 italic">
+                    <p class="text-xs text-slate-100 italic">
                         = ${formatNumber(callsBooked)} calls × ${Math.round(closeRate * 100)}% close rate
                     </p>
                 </div>
@@ -542,36 +542,36 @@
             document.getElementById('financialMetrics').innerHTML = `
                 <!-- Monthly Investment -->
                 <div class="bg-orange-500/5 border-2 border-orange-500/30 rounded-xl p-6">
-                    <h3 class="text-sm font-semibold text-orange-300 uppercase tracking-wide mb-3">Monthly Investment</h3>
+                    <h3 class="text-sm font-semibold text-orange-400 uppercase tracking-wide mb-3">Monthly Investment</h3>
                     <div class="text-4xl font-black text-orange-400 mb-3">${formatCurrency(totalCost)}</div>
-                    <p class="text-xs text-slate-400 italic leading-relaxed">
+                    <p class="text-xs text-slate-100 italic leading-relaxed">
                         = ${formatCurrency(techFee)} tech fee + (${formatNumber(callsBooked)} calls × ${formatCurrency(costPerCall)})
                     </p>
                 </div>
 
                 <!-- CAC -->
                 <div class="bg-orange-500/5 border-2 border-orange-500/30 rounded-xl p-6">
-                    <h3 class="text-sm font-semibold text-orange-300 uppercase tracking-wide mb-3">Cost Per Client (CAC)</h3>
+                    <h3 class="text-sm font-semibold text-orange-400 uppercase tracking-wide mb-3">Cost Per Client (CAC)</h3>
                     <div class="text-4xl font-black text-orange-400 mb-3">${formatCurrency(cac)}</div>
-                    <p class="text-xs text-slate-400 italic leading-relaxed">
+                    <p class="text-xs text-slate-100 italic leading-relaxed">
                         = ${formatCurrency(totalCost)} investment ÷ ${formatNumber(clientsClosed)} clients
                     </p>
                 </div>
 
                 <!-- Monthly Revenue -->
                 <div class="bg-emerald-500/5 border-2 border-emerald-500/30 rounded-xl p-6">
-                    <h3 class="text-sm font-semibold text-emerald-300 uppercase tracking-wide mb-3">Monthly Revenue</h3>
+                    <h3 class="text-sm font-semibold text-emerald-400 uppercase tracking-wide mb-3">Monthly Revenue</h3>
                     <div class="text-4xl font-black text-emerald-400 mb-3">${formatCurrency(monthlyRevenue)}</div>
-                    <p class="text-xs text-slate-400 italic leading-relaxed">
+                    <p class="text-xs text-slate-100 italic leading-relaxed">
                         = ${formatNumber(clientsClosed)} clients × ${formatCurrency(avgSalePrice)} average sale
                     </p>
                 </div>
 
                 <!-- Net Profit -->
                 <div class="bg-emerald-500/5 border-2 border-emerald-500/30 rounded-xl p-6">
-                    <h3 class="text-sm font-semibold text-emerald-300 uppercase tracking-wide mb-3">Net Monthly Profit</h3>
+                    <h3 class="text-sm font-semibold text-emerald-400 uppercase tracking-wide mb-3">Net Monthly Profit</h3>
                     <div class="text-4xl font-black text-emerald-400 mb-3">${formatCurrency(netProfit)}</div>
-                    <p class="text-xs text-slate-400 italic leading-relaxed">
+                    <p class="text-xs text-slate-100 italic leading-relaxed">
                         = ${formatCurrency(monthlyRevenue)} revenue - ${formatCurrency(totalCost)} investment
                     </p>
                 </div>
@@ -585,7 +585,7 @@
                         <svg class="w-16 h-16 ${roiStatus.color} mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                         </svg>
-                        <p class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Return on Investment</p>
+                        <p class="text-sm font-semibold text-white uppercase tracking-wider mb-2">Your Return on Investment</p>
                     </div>
                     
                     <div class="text-7xl sm:text-8xl font-black ${roiStatus.color} mb-6 leading-none">
@@ -596,11 +596,11 @@
                         <p class="text-base font-bold ${roiStatus.color}">${roiStatus.label}</p>
                     </div>
                     
-                    <p class="text-slate-400 text-sm max-w-md mx-auto leading-relaxed mb-6">
+                    <p class="text-slate-200 text-sm max-w-md mx-auto leading-relaxed mb-6">
                         ${roiStatus.description}
                     </p>
                     
-                    <p class="text-xs text-slate-500 italic">
+                    <p class="text-xs text-slate-300 italic">
                         = (${formatCurrency(monthlyRevenue)} - ${formatCurrency(totalCost)}) ÷ ${formatCurrency(totalCost)} × 100
                     </p>
                 </div>
