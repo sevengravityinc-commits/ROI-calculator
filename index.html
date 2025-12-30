@@ -113,7 +113,8 @@
         }
 
         /* Popover styling */
-        .popover {
+        .info-popup {
+            display: none;
             margin-top: 0.5rem;
             padding: 1rem;
             background: rgba(20, 184, 166, 0.1);
@@ -122,11 +123,11 @@
             font-size: 0.875rem;
             line-height: 1.6;
             color: #f1f5f9;
-            animation: slideDown 0.3s ease-out;
         }
 
-        .popover.hidden {
-            display: none;
+        .info-popup.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
         }
 
         @keyframes slideDown {
@@ -214,7 +215,7 @@
                                 <option value="75000">75,000 emails/month (Tech Fee: $1,500)</option>
                                 <option value="100000">100,000 emails/month (Tech Fee: $2,000)</option>
                             </select>
-                            <div id="techFeeInfo" class="popover hidden">
+                            <div id="techFeeInfo" class="info-popup">
                                 Tech fees cover all infrastructure needed for your cold email campaign including domain configuration, email account setup, warmup sequences, and deliverability optimization. The fee scales with volume to ensure optimal performance and sender reputation.
                             </div>
                         </div>
@@ -226,7 +227,7 @@
                                 <button type="button" onclick="togglePopover('emailsPerContactInfo')" class="info-icon">ⓘ</button>
                             </label>
                             <input type="number" id="emailsPerContact" min="1" max="5" value="2" class="w-full bg-slate-900/95 border-2 border-slate-600 rounded-xl px-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
-                            <div id="emailsPerContactInfo" class="popover hidden">
+                            <div id="emailsPerContactInfo" class="info-popup">
                                 This is the total number of emails each contact receives in your sequence (initial email + follow-ups). For example, if set to 3, each prospect gets an initial outreach plus 2 follow-up emails over time.
                             </div>
                         </div>
@@ -241,7 +242,7 @@
                                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-200 font-bold text-base">$</span>
                                 <input type="number" id="costPerCall" min="100" max="1000" step="50" value="300" class="w-full bg-slate-900/95 border-2 border-slate-600 rounded-xl pl-9 pr-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
                             </div>
-                            <div id="costPerCallInfo" class="popover hidden">
+                            <div id="costPerCallInfo" class="info-popup">
                                 This is what you pay Seven Gravity for each qualified sales call that gets booked from your campaign. You only pay when someone meeting your ICP criteria agrees to a call. No retainers, no upfront fees—just results.
                             </div>
                         </div>
@@ -256,7 +257,7 @@
                                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-200 font-bold text-base">$</span>
                                 <input type="number" id="avgSalePrice" min="1000" max="1000000" step="1000" value="10000" class="w-full bg-slate-900/95 border-2 border-slate-600 rounded-xl pl-9 pr-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
                             </div>
-                            <div id="avgSalePriceInfo" class="popover hidden">
+                            <div id="avgSalePriceInfo" class="info-popup">
                                 Enter the average value of a closed deal or contract. This helps calculate your potential monthly revenue and ROI. If your pricing varies, use your average contract value.
                             </div>
                         </div>
@@ -294,7 +295,7 @@
                                 <span>2.75%</span>
                                 <span>5%</span>
                             </div>
-                            <div id="replyRateInfo" class="popover hidden">
+                            <div id="replyRateInfo" class="info-popup">
                                 Industry average reply rates for cold email typically range from 0.5% to 5%. A 2% reply rate is considered solid. Higher rates usually indicate excellent targeting and messaging. This includes both positive and negative replies.
                             </div>
                         </div>
@@ -317,7 +318,7 @@
                             <p class="text-xs text-slate-100 italic">
                                 Of replies, % showing genuine interest
                             </p>
-                            <div id="positiveReplyRateInfo" class="popover hidden">
+                            <div id="positiveReplyRateInfo" class="info-popup">
                                 Not all replies are interested. Some say "not interested" or "remove me." This metric tracks what percentage of your total replies are actually positive and show genuine interest in learning more about your offering.
                             </div>
                         </div>
@@ -340,7 +341,7 @@
                             <p class="text-xs text-slate-100 italic">
                                 Positive replies → scheduled calls
                             </p>
-                            <div id="callBookingRateInfo" class="popover hidden">
+                            <div id="callBookingRateInfo" class="info-popup">
                                 This is the percentage of positive replies that actually convert into scheduled sales calls. Not everyone who's interested will book immediately—some need more nurturing. A 25% conversion rate from positive reply to booked call is solid.
                             </div>
                         </div>
@@ -363,7 +364,7 @@
                             <p class="text-xs text-slate-100 italic">
                                 Booked calls → closed clients
                             </p>
-                            <div id="closeRateInfo" class="popover hidden">
+                            <div id="closeRateInfo" class="info-popup">
                                 This is your sales team's conversion rate—the percentage of booked calls that turn into paying clients. A 25% close rate means 1 in 4 calls becomes a customer. Your actual rate depends on your offer strength, pricing, and sales process.
                             </div>
                         </div>
@@ -715,22 +716,43 @@
         updateSliderBackground(callBookingRateInput, 25, 10, 50);
         updateSliderBackground(closeRateInput, 25, 10, 50);
         calculate();
+    </script>
 
-        // Popover toggle function
+    <!-- Popover Script - Separate for clarity -->
+    <script>
+        // Ultra-simple popover toggle
         function togglePopover(id) {
-            const popover = document.getElementById(id);
-            // Close all other popovers
-            document.querySelectorAll('.popover').forEach(p => {
-                if (p.id !== id) p.classList.add('hidden');
+            // Get the popover
+            var popover = document.getElementById(id);
+            
+            if (!popover) {
+                console.log('ERROR: Cannot find popover with id:', id);
+                return;
+            }
+            
+            // Close ALL popovers first
+            var allPopovers = document.querySelectorAll('.info-popup');
+            allPopovers.forEach(function(p) {
+                if (p.id !== id) {
+                    p.classList.remove('show');
+                }
             });
-            // Toggle this popover
-            popover.classList.toggle('hidden');
+            
+            // Toggle this one
+            popover.classList.toggle('show');
         }
-
-        // Close popovers when clicking outside
+        
+        // Close all popovers when clicking outside
         document.addEventListener('click', function(event) {
-            if (!event.target.closest('.info-icon') && !event.target.closest('.popover')) {
-                document.querySelectorAll('.popover').forEach(p => p.classList.add('hidden'));
+            // Check if click was on info icon or inside popover
+            var clickedIcon = event.target.closest('.info-icon');
+            var clickedPopover = event.target.closest('.info-popup');
+            
+            if (!clickedIcon && !clickedPopover) {
+                // Close all popovers
+                document.querySelectorAll('.info-popup').forEach(function(p) {
+                    p.classList.remove('show');
+                });
             }
         });
     </script>
