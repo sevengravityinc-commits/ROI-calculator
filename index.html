@@ -88,6 +88,57 @@
         input[type="number"]::-webkit-outer-spin-button {
             opacity: 1;
         }
+
+        /* Info icon styling */
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            background: rgba(20, 184, 166, 0.2);
+            color: rgb(20, 184, 166);
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .info-icon:hover {
+            background: rgb(20, 184, 166);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Popover styling */
+        .popover {
+            margin-top: 0.5rem;
+            padding: 1rem;
+            background: rgba(20, 184, 166, 0.1);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #f1f5f9;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .popover.hidden {
+            display: none;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 
     <script>
@@ -153,8 +204,9 @@
                         
                         <!-- Email Volume -->
                         <div class="space-y-3">
-                            <label class="block text-sm font-semibold text-slate-200">
+                            <label class="block text-sm font-semibold text-slate-200 flex items-center gap-2">
                                 Select Tech Fee Package
+                                <button type="button" onclick="togglePopover('techFeeInfo')" class="info-icon">ⓘ</button>
                             </label>
                             <select id="emailVolume" class="w-full bg-slate-900/95 border-2 border-slate-600 rounded-xl px-4 py-3.5 text-slate-100 text-base font-semibold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200 cursor-pointer hover:border-slate-600">
                                 <option value="25000">25,000 emails/month (Tech Fee: $500)</option>
@@ -162,48 +214,51 @@
                                 <option value="75000">75,000 emails/month (Tech Fee: $1,500)</option>
                                 <option value="100000">100,000 emails/month (Tech Fee: $2,000)</option>
                             </select>
-                            <p class="text-xs text-slate-300 italic">
-                                Tech Fee: <span id="techFeeDisplay">$500</span> (includes infrastructure setup)
-                            </p>
+                            <div id="techFeeInfo" class="popover hidden">
+                                Tech fees cover all infrastructure needed for your cold email campaign including domain configuration, email account setup, warmup sequences, and deliverability optimization. The fee scales with volume to ensure optimal performance and sender reputation.
+                            </div>
                         </div>
 
                         <!-- Emails Per Contact -->
                         <div class="space-y-3">
-                            <label class="block text-sm font-semibold text-slate-200">
+                            <label class="block text-sm font-semibold text-slate-200 flex items-center gap-2">
                                 Emails Sent Per Contact
+                                <button type="button" onclick="togglePopover('emailsPerContactInfo')" class="info-icon">ⓘ</button>
                             </label>
                             <input type="number" id="emailsPerContact" min="1" max="5" value="2" class="w-full bg-slate-900/95 border-2 border-slate-600 rounded-xl px-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
-                            <p class="text-xs text-slate-100 italic">
-                                Number of follow-up emails in your sequence (typically 2-3)
-                            </p>
+                            <div id="emailsPerContactInfo" class="popover hidden">
+                                This is the total number of emails each contact receives in your sequence (initial email + follow-ups). For example, if set to 3, each prospect gets an initial outreach plus 2 follow-up emails over time.
+                            </div>
                         </div>
 
                         <!-- Cost Per Call -->
                         <div class="space-y-3">
-                            <label class="block text-sm font-semibold text-slate-200">
+                            <label class="block text-sm font-semibold text-slate-200 flex items-center gap-2">
                                 Cost Per Booked Call
+                                <button type="button" onclick="togglePopover('costPerCallInfo')" class="info-icon">ⓘ</button>
                             </label>
                             <div class="relative">
                                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-200 font-bold text-base">$</span>
                                 <input type="number" id="costPerCall" min="100" max="1000" step="50" value="300" class="w-full bg-slate-900/95 border-2 border-slate-600 rounded-xl pl-9 pr-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
                             </div>
-                            <p class="text-xs text-slate-100 italic">
-                                Your investment per qualified call
-                            </p>
+                            <div id="costPerCallInfo" class="popover hidden">
+                                This is what you pay Seven Gravity for each qualified sales call that gets booked from your campaign. You only pay when someone meeting your ICP criteria agrees to a call. No retainers, no upfront fees—just results.
+                            </div>
                         </div>
 
                         <!-- Average Sale Price -->
                         <div class="space-y-3">
-                            <label class="block text-sm font-semibold text-slate-200">
+                            <label class="block text-sm font-semibold text-slate-200 flex items-center gap-2">
                                 Average Sale Price
+                                <button type="button" onclick="togglePopover('avgSalePriceInfo')" class="info-icon">ⓘ</button>
                             </label>
                             <div class="relative">
                                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-200 font-bold text-base">$</span>
                                 <input type="number" id="avgSalePrice" min="1000" max="1000000" step="1000" value="10000" class="w-full bg-slate-900/95 border-2 border-slate-600 rounded-xl pl-9 pr-4 py-3.5 text-slate-100 text-base font-bold focus:border-turquoise-500 focus:ring-2 focus:ring-turquoise-500/20 transition-all duration-200">
                             </div>
-                            <p class="text-xs text-slate-100 italic">
-                                Typical contract value when a prospect becomes a client
-                            </p>
+                            <div id="avgSalePriceInfo" class="popover hidden">
+                                Enter the average value of a closed deal or contract. This helps calculate your potential monthly revenue and ROI. If your pricing varies, use your average contract value.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -227,7 +282,10 @@
                         <!-- Reply Rate Slider -->
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
-                                <label class="text-sm font-semibold text-slate-200">Reply Rate</label>
+                                <label class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+                                    Reply Rate
+                                    <button type="button" onclick="togglePopover('replyRateInfo')" class="info-icon">ⓘ</button>
+                                </label>
                                 <span class="text-xl font-bold text-turquoise-400" id="replyRateValue">2.0%</span>
                             </div>
                             <input type="range" id="replyRate" min="0.5" max="5" step="0.1" value="2" class="w-full h-3 bg-slate-700 rounded-lg slider-turquoise">
@@ -236,15 +294,18 @@
                                 <span>2.75%</span>
                                 <span>5%</span>
                             </div>
-                            <p class="text-xs text-slate-100 italic">
-                                Percentage of contacts who reply to your emails (industry range: 0.5-5%)
-                            </p>
+                            <div id="replyRateInfo" class="popover hidden">
+                                Industry average reply rates for cold email typically range from 0.5% to 5%. A 2% reply rate is considered solid. Higher rates usually indicate excellent targeting and messaging. This includes both positive and negative replies.
+                            </div>
                         </div>
 
                         <!-- Positive Reply Rate Slider -->
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
-                                <label class="text-sm font-semibold text-slate-200">Positive Reply Rate</label>
+                                <label class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+                                    Positive Reply Rate
+                                    <button type="button" onclick="togglePopover('positiveReplyRateInfo')" class="info-icon">ⓘ</button>
+                                </label>
                                 <span class="text-xl font-bold text-emerald-400" id="positiveReplyRateValue">12.5%</span>
                             </div>
                             <input type="range" id="positiveReplyRate" min="5" max="25" step="0.5" value="12.5" class="w-full h-3 bg-slate-700 rounded-lg slider-emerald">
@@ -254,14 +315,20 @@
                                 <span>25%</span>
                             </div>
                             <p class="text-xs text-slate-100 italic">
-                                Of all replies, percentage showing genuine interest
+                                Of replies, % showing genuine interest
                             </p>
+                            <div id="positiveReplyRateInfo" class="popover hidden">
+                                Not all replies are interested. Some say "not interested" or "remove me." This metric tracks what percentage of your total replies are actually positive and show genuine interest in learning more about your offering.
+                            </div>
                         </div>
 
                         <!-- Call Booking Rate Slider -->
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
-                                <label class="text-sm font-semibold text-slate-200">Call Booking Rate</label>
+                                <label class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+                                    Call Booking Rate
+                                    <button type="button" onclick="togglePopover('callBookingRateInfo')" class="info-icon">ⓘ</button>
+                                </label>
                                 <span class="text-xl font-bold text-turquoise-400" id="callBookingRateValue">25%</span>
                             </div>
                             <input type="range" id="callBookingRate" min="10" max="50" step="1" value="25" class="w-full h-3 bg-slate-700 rounded-lg slider-turquoise">
@@ -271,14 +338,20 @@
                                 <span>50%</span>
                             </div>
                             <p class="text-xs text-slate-100 italic">
-                                Positive replies that convert to scheduled sales calls
+                                Positive replies → scheduled calls
                             </p>
+                            <div id="callBookingRateInfo" class="popover hidden">
+                                This is the percentage of positive replies that actually convert into scheduled sales calls. Not everyone who's interested will book immediately—some need more nurturing. A 25% conversion rate from positive reply to booked call is solid.
+                            </div>
                         </div>
 
                         <!-- Close Rate Slider -->
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
-                                <label class="text-sm font-semibold text-slate-200">Close Rate</label>
+                                <label class="text-sm font-semibold text-slate-200 flex items-center gap-2">
+                                    Close Rate
+                                    <button type="button" onclick="togglePopover('closeRateInfo')" class="info-icon">ⓘ</button>
+                                </label>
                                 <span class="text-xl font-bold text-emerald-400" id="closeRateValue">25%</span>
                             </div>
                             <input type="range" id="closeRate" min="10" max="50" step="1" value="25" class="w-full h-3 bg-slate-700 rounded-lg slider-emerald">
@@ -288,8 +361,11 @@
                                 <span>50%</span>
                             </div>
                             <p class="text-xs text-slate-100 italic">
-                                Booked calls that convert to closed clients
+                                Booked calls → closed clients
                             </p>
+                            <div id="closeRateInfo" class="popover hidden">
+                                This is your sales team's conversion rate—the percentage of booked calls that turn into paying clients. A 25% close rate means 1 in 4 calls becomes a customer. Your actual rate depends on your offer strength, pricing, and sales process.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -639,6 +715,24 @@
         updateSliderBackground(callBookingRateInput, 25, 10, 50);
         updateSliderBackground(closeRateInput, 25, 10, 50);
         calculate();
+
+        // Popover toggle function
+        function togglePopover(id) {
+            const popover = document.getElementById(id);
+            // Close all other popovers
+            document.querySelectorAll('.popover').forEach(p => {
+                if (p.id !== id) p.classList.add('hidden');
+            });
+            // Toggle this popover
+            popover.classList.toggle('hidden');
+        }
+
+        // Close popovers when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.info-icon') && !event.target.closest('.popover')) {
+                document.querySelectorAll('.popover').forEach(p => p.classList.add('hidden'));
+            }
+        });
     </script>
 </body>
 </html>
